@@ -1,0 +1,9 @@
+<%@ page pageEncoding="ISO-8859-9"%>
+<hx:panelActionbar id="menu" styleClass="panelActionbar">
+	<hx:requestLink id="menuLink1" styleClass="requestLink" action="customer">
+		<h:outputText styleClass="outputText" id="menuText1" value="Customer"></h:outputText>
+	</hx:requestLink>
+	<hx:requestLink id="menuLink2" styleClass="requestLink" action="logout">
+		<h:outputText styleClass="outputText" id="menuText2" value="Exit"></h:outputText>
+	</hx:requestLink>
+</hx:panelActionbar>

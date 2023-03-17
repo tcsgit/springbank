@@ -1,0 +1,104 @@
+
+
+
+
+A{
+	font:normal normal normal 11px verdana;
+}
+Body{
+	margin:0px;
+}
+
+TD{ 
+	font:normal normal normal 11px verdana;
+}
+
+Input{
+	font:normal normal normal 11px verdana;
+}
+
+Select{
+	font:normal normal normal 11px verdana;
+}
+
+.Title{
+	font:normal normal bold 11px verdana;
+	color:#0000ff;
+}
+
+.Caption{
+	font:normal normal bold 11px verdana;
+}
+
+.Text{
+	font:normal normal normal 11px verdana;
+	width:150px;	
+}
+
+.TextLong{
+	font:normal normal normal 11px verdana;
+	width:250px;	
+}
+
+.TextError{
+	border:1px solid #FF0000;
+	font:normal normal normal 11px verdana;
+	width:185px;	
+}
+ 	
+.List{
+	border:1px solid #000000;
+}
+
+.Line{
+	border-top:1px solid #000000;
+}    
+
+.Header{
+	background-color: #BACE87;
+	font:normal normal bold 11px verdana;
+}
+
+.Footer{
+	border-top:1px solid #000000;
+	background-color: #B1B1B1;
+}
+
+.Total{
+	border-top:1px solid #000000;
+	font:normal normal bold 11px verdana;
+}    
+
+.Top{
+	background:url(spring.png) no-repeat left center #778831;
+	font:normal normal bold 20px verdana;
+	color: #004813;
+	text-align:right;
+}
+
+.Middle-Left{
+	background:#BACE87;
+	border-top:1px solid #000000;
+	border-bottom:1px solid #000000;
+	border-right:1px solid #000000;
+	vertical-align:top;
+	font:normal normal normal 11px verdana;
+	padding:5px;
+}
+
+.Middle-Right{
+	background:#E2F3B8;
+	border-top:1px solid #000000;
+	border-bottom:1px solid #000000;
+	vertical-align:top;
+	font:normal normal normal 11px verdana;
+	padding:20px;
+}
+
+.Bottom{
+	color: #004813;
+	background:#778831;
+	font:normal normal normal 10px verdana;
+	text-align:center;
+	padding:5px;
+}		

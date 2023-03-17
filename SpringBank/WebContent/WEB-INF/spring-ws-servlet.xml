@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <!-- Endpoints -->
+    <bean id="searchCustomerEndpoint" class="com.springbank.service.ws.endpoint.SearchCustomerEndpoint">
+        <constructor-arg ref="bankingService"/>
+        <constructor-arg ref="marshaller"/>
+    </bean>
+    
+    <!-- Marshallers -->
+    <bean id="marshaller" class="org.springframework.oxm.castor.CastorMarshaller">
+        <property name="mappingLocation" value="/WEB-INF/mapping/castor-mapping.xml"/>
+    </bean>
+    
+    <!-- Mapping namespaces to endpoints -->
+    <bean class="org.springframework.ws.server.endpoint.mapping.PayloadRootQNameEndpointMapping">
+        <property name="mappings">
+            <props>
+                <prop key="{http://springbank.com/searchcustomer/schemas}SearchCustomerRequest">searchCustomerEndpoint</prop>                
+            </props>
+        </property>
+        <property name="interceptors">
+            <bean class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor"/>
+        </property>
+    </bean>
+
+    <!-- Wsdl Definition for SearchCustomerWS -->
+    <bean id="SearchCustomer" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition">
+        <property name="schema" ref="searchCustomerSchema"/>
+        <property name="portTypeName" value="SearchCustomer"/>
+        <property name="locationUri" value="/WS/SearchCustomerWS"/>
+        <property name="targetNamespace" value="http://springbank.com/searchcustomer/definitions"/>
+    </bean>
+    <bean id="searchCustomerSchema" class="org.springframework.xml.xsd.SimpleXsdSchema">
+        <property name="xsd" value="/WEB-INF/xsd/SearchCustomer.xsd"/>
+    </bean>
+
+</beans>

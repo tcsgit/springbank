@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 9, 2009 10:23:17 PM by Hibernate Tools 3.2.0.b9 -->
+<hibernate-mapping>
+    <class name="com.springbank.entity.Customer" table="CUSTOMER">
+        <id name="customerId" type="long" unsaved-value="0">
+            <column name="CUSTOMER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="customerNumber" type="string">
+            <column name="CUSTOMER_NUMBER" length="25" not-null="true" />
+        </property>
+        <property name="customerPassword" type="string">
+            <column name="CUSTOMER_PASSWORD" length="25" not-null="true" />
+        </property>
+        <property name="customerName" type="string">
+            <column name="CUSTOMER_NAME" length="25" not-null="true" />
+        </property>
+        <property name="customerSurname" type="string">
+            <column name="CUSTOMER_SURNAME" length="25" not-null="true" />
+        </property>
+        <property name="customerAddress" type="string">
+            <column name="CUSTOMER_ADDRESS" length="50" not-null="true" />
+        </property>
+        <set name="accounts" inverse="true" cascade="all" lazy="true" >
+            <key>
+                <column name="CUSTOMER_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.springbank.entity.Account" />
+        </set>
+    </class>
+</hibernate-mapping>

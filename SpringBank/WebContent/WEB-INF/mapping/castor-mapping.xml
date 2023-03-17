@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.org/mapping.dtd">
+
+<mapping>
+     <description>SpringBank WS Castor Mapping</description>
+     
+     <class name="com.springbank.service.ws.schema.SearchCustomerRequest">
+          <map-to xml="SearchCustomerRequest" ns-uri="http://springbank.com/searchcustomer/schemas" />          
+          <field name="customerNumber" type="string">
+               <bind-xml name="customerNumber" node="element"/>
+          </field>
+     </class>
+
+     <class name="com.springbank.service.ws.schema.SearchCustomerResponse">
+          <map-to xml="SearchCustomerResponse" ns-uri="http://springbank.com/searchcustomer/schemas" />          
+          <field name="customer" type="com.springbank.entity.Customer">
+               <bind-xml name="sb:customer" xmlns:sb="http://springbank.com/searchcustomer/schemas" node="element"/>
+          </field>
+     </class>
+
+     <class name="com.springbank.entity.Customer">
+          <map-to xml="Customer" ns-uri="http://springbank.com/searchcustomer/schemas" />
+          <field name="customerId" type="long">
+               <bind-xml name="customerId" node="element"/>
+          </field>
+          <field name="customerNumber" type="string">
+               <bind-xml name="customerNumber" node="element"/>
+          </field> 
+          <field name="customerPassword" type="string">
+               <bind-xml name="customerPassword" node="element"/>
+          </field> 
+          <field name="customerName" type="string">
+               <bind-xml name="customerName" node="element"/>
+          </field> 
+          <field name="customerSurname" type="string">
+               <bind-xml name="customerSurname" node="element"/>
+          </field> 
+          <field name="customerAddress" type="string">
+               <bind-xml name="customerAddress" node="element"/>
+          </field>
+          <field name="accounts" type="com.springbank.entity.Account" collection="set">
+               <bind-xml name="sb:account" xmlns:sb="http://springbank.com/searchcustomer/schemas" node="element"/>
+         </field> 
+     </class>
+
+     <class name="com.springbank.entity.Account">
+          <map-to xml="Account" ns-uri="http://springbank.com/searchcustomer/schemas" />
+          <field name="accountId" type="long">
+               <bind-xml name="accountId" node="element"/>
+          </field>
+          <field name="accountNumber" type="string">
+               <bind-xml name="accountNumber" node="element"/>
+          </field> 
+          <field name="accountBalance" type="double">
+               <bind-xml name="accountBalance" node="element"/>
+         </field> 
+     </class>
+
+</mapping>

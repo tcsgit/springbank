@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://springbank.com/searchcustomer/schemas" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://springbank.com/searchcustomer/definitions" targetNamespace="http://springbank.com/searchcustomer/definitions">
+  <wsdl:types xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sb="http://springbank.com/searchcustomer/schemas" elementFormDefault="qualified" targetNamespace="http://springbank.com/searchcustomer/schemas">
+
+    <xs:element name="SearchCustomerRequest" type="sb:SearchCustomerRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    <xs:element name="SearchCustomerResponse" type="sb:SearchCustomerResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+    <xs:complexType name="SearchCustomerRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:element name="customerNumber" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </xs:sequence>  
+    </xs:complexType>
+    <xs:complexType name="SearchCustomerResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:element name="customer" type="sb:Customer" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </xs:sequence>  
+    </xs:complexType>
+    <xs:complexType name="Customer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:element name="customerId" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <xs:element name="customerNumber" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <xs:element name="customerPassword" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <xs:element name="customerName" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <xs:element name="customerSurname" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <xs:element name="customerAddress" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/> 
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="account" nillable="true" type="sb:Account" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>                       
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Account" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:element name="accountId" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <xs:element name="accountNumber" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <xs:element name="accountBalance" type="xs:double" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="SearchCustomerRequest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:part element="sch:SearchCustomerRequest" name="SearchCustomerRequest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SearchCustomerResponse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:part element="sch:SearchCustomerResponse" name="SearchCustomerResponse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SearchCustomer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:operation name="SearchCustomer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <wsdl:input message="tns:SearchCustomerRequest" name="SearchCustomerRequest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    </wsdl:input>
+      <wsdl:output message="tns:SearchCustomerResponse" name="SearchCustomerResponse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SearchCustomerSoap11" type="tns:SearchCustomer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+    <wsdl:operation name="SearchCustomer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <soap:operation soapAction="" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      <wsdl:input name="SearchCustomerRequest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      </wsdl:input>
+      <wsdl:output name="SearchCustomerResponse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SearchCustomerService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:port binding="tns:SearchCustomerSoap11" name="SearchCustomerSoap11" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <soap:address location="http://localhost:9081/SpringBank/WS/SearchCustomerWS" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

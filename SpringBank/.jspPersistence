@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence>
+<jsp-scripting>
+        <request id="/SpringBank/WebContent/AccountEdit.jsp">
+            
+        </request>
+    <session>
+            <variable name="currentCustomerId" type="java.lang.Long"/>
+        </session>
+    </jsp-scripting>
+<beanData>
+        <bean id="/SpringBank/WebContent/CustomerEdit.jsp" type="com.springbank.ui.bean.CustomerBean">
+            <collectionProperty name="accounts">
+                <contains type="com.springbank.entity.Account"/>
+            </collectionProperty>
+        <collectionProperty name="customers">
+                <contains type="java.lang.Object"/>
+            </collectionProperty>
+        </bean>
+    <bean id="/SpringBank/WebContent/AccountEdit.jsp" type="com.springbank.ui.bean.CustomerBean">
+            <collectionProperty name="otherAccountsOfCustomer">
+                <contains type="java.lang.Object"/>
+            </collectionProperty>
+        <collectionProperty name="customers">
+                <contains type="com.springbank.ui.bean.CustomerBean"/>
+            </collectionProperty>
+        <collectionProperty name="accounts">
+                <contains type="java.lang.Object"/>
+            </collectionProperty>
+        </bean>
+    <bean id="/SpringBank/WebContent/CustomerList.jsp" type="com.springbank.ui.bean.CustomerBean">
+            <collectionProperty name="otherAccountsOfCustomer">
+                <contains type="java.lang.Object"/>
+            </collectionProperty>
+        <collectionProperty name="customers">
+                <contains type="java.lang.Object"/>
+            </collectionProperty>
+        <collectionProperty name="accounts">
+                <contains type="java.lang.Object"/>
+            </collectionProperty>
+        </bean>
+    </beanData>
+</persistence>

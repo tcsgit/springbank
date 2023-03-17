@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+        	<param name="ConversionPattern" value="%d %-5p [%c] : %m %n"/>
+		</layout>
+	</appender>
+
+	<appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+		<errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+		<param name="File" value="logs/SpringBank/service.log"/>
+		<param name="Append" value="false"/>
+		<param name="MaxFileSize" value="100KB"/>
+		<param name="MaxBackupIndex" value="1"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] : %m %n"/>
+		</layout>	    
+	</appender>
+
+	<appender name="SMTP" class="org.apache.log4j.net.SMTPAppender">
+		<errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+		<param name="To" value="SpringBank Admin&lt;serkan.guzeller@softtech.com.tr&gt;"/>
+		<param name="From" value="SpringBank Log Agent&lt;serkan.guzeller@softtech.com.tr&gt;"/>
+		<param name="Subject" value="SpringBank Server Error"/>
+		<param name="SMTPHost" value="smtp.isnet.net.tr"/>
+		<param name="BufferSize" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] : %m %n"/>
+		</layout>
+	</appender>
+      
+	<logger name="ServiceExceptions" additivity="false">
+		<level value="ERROR"/>
+		<appender-ref ref="FILE"/>		
+	</logger>
+	
+   <root>
+      <level value="INFO" />
+      <appender-ref ref="CONSOLE" />
+   </root>	
+ 
+</log4j:configuration>
+
+
